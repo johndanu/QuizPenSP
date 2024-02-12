@@ -15,30 +15,30 @@ import axios from "axios";
 import { Icon } from "@iconify/react";
 
 function SubjectsView() {
-  // const URL = `http://localhost:8000/subjects`
-  const [allSubjects, getAllSubjects] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+    const baseURL = import.meta.env.VITE_API_URL;
+    const [allSubjects, getAllSubjects] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
-  const getSubjects = () => {
-    axios
-      .get(`http://localhost:8000/subjects`)
-      .then((response) => {
-        getAllSubjects(response.data);
-      })
-      .catch((error) => {
-        // handle error
-        console.log(error);
-      })
-      .finally(() => {
-        // always executed
-        setIsLoading(false);
-      });
-  };
-  useEffect(() => {
-    setIsLoading(true);
-    getSubjects();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    const getSubjects = () => {
+        axios
+            .get(`${baseURL}subjects`)
+            .then((response) => {
+                getAllSubjects(response.data);
+            })
+            .catch((error) => {
+                // handle error
+                console.log(error);
+            })
+            .finally(() => {
+                // always executed
+                setIsLoading(false);
+            });
+    }
+    useEffect(() => {
+        setIsLoading(true);
+        getSubjects();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
   return (
     <Container>

@@ -4,13 +4,13 @@ import axios from 'axios';
 import { Icon } from '@iconify/react';
 
 function SubjectsView() {
-    // const URL = `http://localhost:8000/subjects`
+    const baseURL = import.meta.env.VITE_API_URL;
     const [allSubjects, getAllSubjects] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
     const getSubjects = () => {
         axios
-            .get(`http://localhost:8000/subjects`)
+            .get(`${baseURL}subjects`)
             .then((response) => {
                 getAllSubjects(response.data);
             })

@@ -1,7 +1,18 @@
-import { Avatar, Box, Card, CardActionArea, CardContent, CardMedia, Container, Divider, Grid, Stack, Typography } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Icon } from '@iconify/react';
+import {
+  Avatar,
+  Box,
+  Card,
+  CardContent,
+  CardMedia,
+  Container,
+  Divider,
+  Grid,
+  Stack,
+  Typography,
+} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Icon } from "@iconify/react";
 
 function SubjectsView() {
     const baseURL = import.meta.env.VITE_API_URL;
@@ -29,77 +40,147 @@ function SubjectsView() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    return (
-        <Container>
-            {isLoading ? (
-                <Typography>Loading...</Typography>
-            ) : (
-                <>
-                    <Stack direction="row" spacing={'auto'} alignItems="center" paddingTop='5vh'>
-                        <Stack direction="column" spacing={2} sx={{ alignItems: 'left' }}>
-                            <Typography variant="h2">Hi, John</Typography>
-                            <Typography variant="h4">Let's make this day productive</Typography>
-                        </Stack>
-                        <Avatar alt="Travis Howard" src="src/assets/avatar.jpg" sx={{ height: '13vh', width: '10vh' }} />
-                    </Stack>
-                    <Grid>
-                        <Card sx={{ p: 5, m: 8, borderRadius: 8,}}>
-                            <Grid container spacing={0}>
-                                <Grid item xs={6} >
-                                    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                                        <Icon icon="game-icons:rank-3" width="50" height="50" style={{ color: '#ffc200' }} />
-                                        <Box sx={{ ml: 4 }}>
-                                            <Typography variant="h5">Ranking</Typography>
-                                            <Typography variant="h4" sx={{ fontFamily: 'Verdana', color: '#10beda' }}>100</Typography>
-                                        </Box>
-                                    </Box>
-                                </Grid>
-                                <Divider orientation="vertical" flexItem />
-                                <Grid item xs={6}>
-                                    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                                        <Icon icon="vaadin:coins" width="50" height="50" style={{ color: '#ffc200' }} />
-                                        <Box sx={{ ml: 4 }}>
-                                            <Typography variant="h5">Points</Typography>
-                                            <Typography variant="h4" sx={{ fontFamily: 'Verdana', color: '#10beda' }}>100</Typography>
-                                        </Box>
-                                    </Box>
-                                </Grid>
-                            </Grid>
-                        </Card>
-                    </Grid>
-                    <Grid Container spacing={5} sx={{ mt: 5, display: 'flex', flexWrap: 'wrap' }} justifyContent="center"  >
-                        {allSubjects &&
-                            allSubjects.map((subject, index) => (
-                                <Grid item key={index} xs={12} sm={6} md={4}>
-                                    <Card sx={{ width: '30vh', boxShadow: 5, m: 3, height: 'auto', borderRadius: 3, }}>
-                                        <CardActionArea>
-                                            <Box sx={{ position: 'absolute', filter: 'drop-shadow(30px 30px 20px rgba(192,192,192, 0.8))' }}>
-                                                <CardMedia
-                                                    component="img"
-                                                    height='150vh'
-                                                    image="src/assets/png1.png"
-                                                    alt="green iguana"
-                                                    sx={{ position: 'relative', zIndex: 1, background: 'transparent', border: 'none' }}
-                                                />
-                                            </Box>
-                                            <Box>
-                                                <CardContent sx={{ pt: 20 }}>
-                                                    <Typography gutterBottom variant="h5" component="div">
-                                                        {subject.subjectName}
-                                                    </Typography>
-                                                </CardContent>
-                                            </Box>
-                                        </CardActionArea>
-                                    </Card>
-                                </Grid>
-                            ))}
-                    </Grid>
-                </>
-            )}
+  return (
+    <Container>
+      {isLoading ? (
+        <Typography>Loading...</Typography>
+      ) : (
+        <>
+          <Stack
+            direction="row"
+            alignItems="center"
+            justifyContent="space-between"
+            sx={{ mt: 5, px: 2 }}
+          >
+            <Stack direction="column">
+              <Typography variant="h4">Hi, John</Typography>
+              <Typography variant="body2">
+                Let's make this day productive
+              </Typography>
+            </Stack>
+            <Avatar
+              alt="Travis Howard"
+              src="src/assets/avatar.jpg"
+              sx={{ width: "70px", height: "70px" }}
+            />
+          </Stack>
 
+          <Card
+            sx={{
+              py: 5,
+              my: 2,
+              borderRadius: 8,
+              mx: "auto",
+            }}
+          >
+            <Stack
+              direction="row"
+              spacing={2}
+              justifyContent="space-around"
+              alignItems="center"
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Icon
+                  icon="game-icons:rank-3"
+                  width="40"
+                  height="40"
+                  style={{
+                    color: "#ffc200",
+                  }}
+                />
+                <Box sx={{ ml: 2 }}>
+                  <Typography variant="h5">Ranking</Typography>
+                  <Typography
+                    variant="h4"
+                    sx={{ fontFamily: "Verdana", color: "#10beda" }}
+                  >
+                    100
+                  </Typography>
+                </Box>
+              </Box>
 
-        </Container>
-    )
+              <Divider orientation="vertical" flexItem />
+
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Icon
+                  icon="vaadin:coins"
+                  width="40"
+                  height="40"
+                  style={{
+                    color: "#ffc200",
+                    display: { xs: "none", md: "block" },
+                  }}
+                />
+                <Box sx={{ ml: 2 }}>
+                  <Typography variant="h5">Points</Typography>
+                  <Typography
+                    variant="h4"
+                    sx={{ fontFamily: "Verdana", color: "#10beda" }}
+                  >
+                    100
+                  </Typography>
+                </Box>
+              </Box>
+            </Stack>
+          </Card>
+          <Typography variant="h5" sx={{ mb: 2 }}>
+            Let's play
+          </Typography>
+          <Grid container spacing={2}>
+            {allSubjects &&
+              allSubjects.map((subject, index) => (
+                <Grid item key={index} xs={6} md={4} lg={3}>
+                  <Card
+                    sx={{
+                      boxShadow: 5,
+                      width: "100%",
+                      height: "100%",
+                      borderRadius: 3,
+                    }}
+                  >
+                    <CardMedia
+                      component="img"
+                      image="src/assets/png1.png"
+                      alt="green iguana"
+                      sx={{
+                        width: "100%",
+                        transition: "transform 0.5s ease",
+                        "&:hover": {
+                          transform: "scale(1.1)", // Scale the image up to 110% when hovered
+                        },
+                      }}
+                    />
+
+                    <CardContent>
+                      <Typography
+                        gutterBottom
+                        variant="h5"
+                        component="div"
+                        textAlign="center"
+                      >
+                        {subject.subjectName}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))}
+          </Grid>
+        </>
+      )}
+    </Container>
+  );
 }
 
-export default SubjectsView
+export default SubjectsView;

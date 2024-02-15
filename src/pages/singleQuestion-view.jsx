@@ -79,13 +79,16 @@ function SingleQuestionView() {
                             value={index} 
                             control={
                                 <Radio 
-                                //   icon={
-                                //     selectedOptionIndex === index && correctOption === index + 1 ? 
-                                //     (<Icon icon="mdi:tick-circle-outline" /> ): 
-                                //     selectedOptionIndex === index ? 
-                                //     (<Icon icon="codicon:error" />) : 
-                                //     <Icon icon="prime:circle" />
-                                //   }
+                                  icon={
+                                    <Icon icon="prime:circle" />
+                                  }
+                                  checkedIcon={
+                                    index === correctOption-1 && selectedOptionIndex===index? 
+                                    <Icon icon="mdi:tick-circle"  style={{color: '#0ebeda'}} /> : 
+                                    index !== correctOption-1 && selectedOptionIndex===index ? 
+                                    <Icon icon="gridicons:cross-circle" width="1rem" height="1em"  style={{color: '#ff3f32'}} />: 
+                                    <Icon icon="prime:circle" />
+                                  }                                
                                 />
                               } 
                             label={option} 

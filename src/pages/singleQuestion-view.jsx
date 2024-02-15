@@ -80,21 +80,19 @@ function SingleQuestionView() {
                             control={
                                 <Radio 
                                   icon={
-                                    <Icon icon="prime:circle" />
+                                    <Icon icon="prime:circle" width="1.5em" height="1.5em"  style={{color:'#C6D5DB'}}/>
                                   }
                                   checkedIcon={
                                     index === correctOption-1 && selectedOptionIndex===index? 
-                                    <Icon icon="mdi:tick-circle"  style={{color: '#0ebeda'}} /> : 
-                                    index !== correctOption-1 && selectedOptionIndex===index ? 
-                                    <Icon icon="gridicons:cross-circle" width="1rem" height="1em"  style={{color: '#ff3f32'}} />: 
-                                    <Icon icon="prime:circle" />
+                                    <Icon icon="mdi:tick-circle" width="1.5em" height="1.5em"   style={{color: '#0ebeda'}} /> : 
+                                    index !== correctOption-1 && selectedOptionIndex===index && 
+                                    <Icon icon="gridicons:cross-circle" width="1.5em" height="1.5em"  style={{color: '#ff3f32'}} />                                    
                                   }                                
                                 />
                               } 
                             label={option} 
                             labelPlacement="start" 
-                            sx={{
-                                mr:1,
+                            sx={{                                
                                 justifyContent:'space-between',
                                 }}                               
                             />    

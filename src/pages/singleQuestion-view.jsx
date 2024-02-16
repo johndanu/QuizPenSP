@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Card, Container, FormControl, FormControlLabel, LinearProgress, Radio, RadioGroup, Stack, Typography } from '@mui/material';
+import { Box, Card, CircularProgress, Container, FormControl, FormControlLabel, LinearProgress, Radio, RadioGroup, Stack, Typography } from '@mui/material';
 import { Icon } from '@iconify/react';
 import axios from "axios";
 
@@ -52,9 +52,20 @@ function SingleQuestionView() {
                         <Box sx={{ flex: 1, mx: 1 }}><LinearProgress variant="determinate" /></Box>
                         <Typography variant='body1'>10/40</Typography>
                     </Stack>
+                    <Box sx={{ position: 'relative', textAlign: 'center', mt: 3 }}>
+                        <CircularProgress determinate value={90}
+                            // variant="determinate"
+                            // value={80} // Adjust the value as per your requirement
+                            size={35} // Adjust the size of the circular progress
+                            sx={{
+                                position: 'relative',
+                                top: '40px', // Adjust the positioning as per your requirement                               
+                            }}
+                        ></CircularProgress>
                     <Card sx={{ backgroundColor: '#d5f9ff', mt: 3, p: 2, borderRadius: 3 }}>
                         <Typography variant='h5'>{singleQuestion.questionText}</Typography>
                     </Card>
+                    </Box>
                     <Stack sx={{ mt: 3 }} spacing={3}>
                     {singleQuestion.options.map((option, index) => (
                         <>                       

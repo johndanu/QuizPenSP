@@ -53,15 +53,35 @@ function SingleQuestionView() {
                         <Typography variant='body1'>10/40</Typography>
                     </Stack>
                     <Box sx={{ position: 'relative', textAlign: 'center', mt: 3 }}>
-                        <CircularProgress determinate value={90}
-                            // variant="determinate"
-                            // value={80} // Adjust the value as per your requirement
-                            size={35} // Adjust the size of the circular progress
-                            sx={{
-                                position: 'relative',
-                                top: '40px', // Adjust the positioning as per your requirement                               
+                    <Box sx={{ position: 'relative', top: '40px' }}>
+                        <CircularProgress
+                            variant="determinate"
+                            value={75} 
+                            size={35}
+                            sx={{                 
+                                '& .MuiCircularProgress-svg': {
+                                    circle: {
+                                        stroke: '#0ebeda',
+                                        strokeWidth: 3,
+                                        strokeLinecap: 'round',
+                                        transition: 'stroke-dashoffset 0.5s ease 0s',
+                                        
+                                    },
+                                },
                             }}
-                        ></CircularProgress>
+                        />
+                        <Typography
+                            variant="caption"
+                            sx={{
+                                position: 'absolute',
+                                top: '50%',
+                                left: '50%',
+                                transform: 'translate(-50%, -50%)',
+                            }}
+                        >
+                            75 {/* Adjust the value of the progress */}
+                        </Typography>
+                    </Box>
                     <Card sx={{ backgroundColor: '#d5f9ff', mt: 3, p: 2, borderRadius: 3 }}>
                         <Typography variant='h5'>{singleQuestion.questionText}</Typography>
                     </Card>
